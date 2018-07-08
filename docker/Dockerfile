@@ -3,7 +3,8 @@ FROM centos7-bootable
 MAINTAINER RJ Bergeron <rbergero@gmail.com>
 
 # install packages
-RUN yum -y install libvirt-daemon virt-install kvm libvirt-daemon-driver-network firewalld bridge-utils libvirt-daemon-kvm libvirt-daemon-driver-qemu \
+RUN yum -y install centos-release-qemu-ev && \
+    yum -y install libvirt-daemon virt-install kvm libvirt-daemon-driver-network firewalld bridge-utils libvirt-daemon-kvm libvirt-daemon-driver-qemu \
                    && \
     yum clean all && rm -rf /var/cache/yum && \
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
