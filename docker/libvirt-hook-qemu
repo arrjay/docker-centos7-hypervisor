@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+[ "${2}" == "started" ] && {
+  systemctl start tmux-console.service
+  tmux -L console new-window -d "${1}" "virsh console ${1}"
+}
+
+true

@@ -39,5 +39,12 @@ ADD dnsmasq.service.d /
 # reconfigure libvirt networking
 ADD libvirt-networks /etc/libvirt/qemu/networks
 
+# systemd services for tmux autoconsole
+ADD systemd-system /etc/systemd/system
+RUN ln -sf /etc/systemd/system/tmux-console.service /etc/systemd/system/multi-user.target.wants/tmux-console.service
+
+# libvirt hook for tmux autoconsole
+ADD libvirt-hook-qemu /etc/libvirt/hooks/qemu
+
 # disable libvirt network autostarts
 # rm -f /etc/libvirt/qemu/networks/autostart/*
