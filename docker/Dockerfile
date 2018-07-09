@@ -5,7 +5,7 @@ MAINTAINER RJ Bergeron <rbergero@gmail.com>
 # install packages
 RUN yum -y install centos-release-qemu-ev && \
     yum -y install libvirt-daemon virt-install kvm libvirt-daemon-driver-network firewalld bridge-utils libvirt-daemon-kvm libvirt-daemon-driver-qemu \
-                   && \
+                   OVMF && \
     yum clean all && rm -rf /var/cache/yum && \
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
 
